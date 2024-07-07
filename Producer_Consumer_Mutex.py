@@ -46,8 +46,8 @@ class Producer(Process):
     def run(self):
         while True:
             self.produceItem()
-    
-                
+
+
 class Consumer(Process):
     def __init__(self,storage,lock):
         super().__init__()
@@ -72,16 +72,16 @@ class Consumer(Process):
     def run(self):
         while True:
             self.consumeItem()
-    
+
+                
 
 if __name__ == '__main__':
     
     storage = Storage(10,0)
     mutex = Lock()
+    
     producer = Producer(storage, mutex)
     consumer = Consumer(storage, mutex)
-    consumer1 = Consumer(storage, mutex)
-
+    
     producer.start()
     consumer.start()
-    consumer1.start()
